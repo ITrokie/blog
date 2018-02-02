@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>call-apply的区别</title>
+</head>
+
+<body>
+    <div id="div1">div1</div>
+
+    <script>
+        /* 
+                                        call,apply的区别：
+                                        Function.prototype.call 和 Funtion.prototype.apply  的作用是一模一样的，区别仅仅在于传入参数形式的不同。
+                                        
+                                        apply接受两个参数，第一个参数指定了函数体内this对象的指向，第二个参数为数组，传递给被调用的函数
+
+                                        call传入的参数数量不固定，跟apply相同的是，第一个参数也是代表函数体内的this的指向，从第二个参数开始往后，每个参数依次被传递给被调用的函数
+                                        
+                                        */
+
+
+        var func = function (a, b, c) {
+            console.log([a, b, c])
+        }
+
+        func.apply(null, [1, 2, 3]) // [1,2,3]
+
+        func.call(null, 1, 2, 3) // [1,2,3]
+
+
+        /* 使用场景 */
+
+        var obj1 = {
+            name: 'obj1'
+        }
+
+        var obj2 = {
+            name: 'obj2'
+        }
+
+        window.name = 'window'
+
+        var getName = function () {
+            console.log(this.name)
+        }
+
+        getName(); //window
+        getName.call(obj1); //obj1
+        getName.call(obj2); //obj2
+
+
+
+        //点击事件中的应用
+        document.getElementById('div1').onclick = function () {
+            console.log(this); //dom对象
+            var callback = function () {
+                console.log(this)
+            }
+            callback(); //window对象,相当于window.callback
+            callback.call(this); //dom对象
+        }
+    </script>
+</body>
+
+</html>
