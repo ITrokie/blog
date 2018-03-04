@@ -27,16 +27,16 @@ npm install --save-dev babel-cli
 
 ### 编译文件
 
-```js
-编译目标文件并输出：
-npx babel 要编译的文件 -o 输出的目标文件
-例如：npx babel script.js -o test.js
-```
+#### 编译目标文件并输出：npx babel 要编译的文件 -o 输出的目标文件 例如：
 
 ```js
-想要每次修改文件都编译目标文件并输出：
-npx babel 要编译的文件 -w -o 输出的目标文件
-例如：npx babel script.js -w -o test.js
+npx babel script.js -o test.js
+```
+
+#### 想要每次修改文件都编译目标文件并输出：npx babel 要编译的文件 -w -o 输出的目标文件  例如：
+
+```js
+npx babel script.js -w -o test.js
 ```
 
 ```js
